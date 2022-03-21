@@ -54,6 +54,56 @@ class LinkedList(object):
         newnode.next = middle_node.next
         middle_node.next = newnode
 
+    def find_index(self, value):
+        current = self.head
+        index = 0
+        while current is not None:
+            if current.node == value:
+                return index
+            current = current.next
+            index += 1
+        return None
+
+    def find_value(self, index):
+        current = self.head
+        count = 0
+        while current is not None:
+            if index == count:
+                return current.node
+            current = current.next
+            count += 1
+        return None
+
+    def remove_head(self):
+        self.head = self.head.next
+
+    def remove_tail(self):
+        if self.head is None:
+            return None
+        if self.head.next is None:
+            self.head = None
+        second_last = self.head
+        while second_last.next.next:
+            second_last = second_last.next
+        second_last.next = None
+
+    def remove_from_value(self, value):
+        current = self.head
+        if current.node == value:
+            self.head = current.next
+        else:
+            while current is not None:
+                if current.node == value:
+                    break
+                pre = current
+                current = current.next
+            pre.next = current.next
+
+    def remove_from_index(self):
+        
+
+
+
 
 
 list = LinkedList()
@@ -70,7 +120,12 @@ value2.next = value3
 # list.add_tail(None)
 list.insert(value2, 'C')
 list.insert(value2.next, 'E')
+# list.remove_head()
+# list.remove_tail()
+list.remove_from_value('A')
 list.print_list()
 # print(list.get_head())
 # print(list.get_end())
 # print(list.get_length())
+# print(list.find_index('E'))
+# print(list.find_value(1))
