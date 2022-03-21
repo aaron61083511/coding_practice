@@ -89,7 +89,9 @@ class LinkedList(object):
 
     def remove_from_value(self, value):
         current = self.head
-        if current.node == value:
+        if self.find_index(value) is None:
+            print('Item not in list')
+        elif current.node == value:
             self.head = current.next
         else:
             while current is not None:
@@ -99,12 +101,21 @@ class LinkedList(object):
                 current = current.next
             pre.next = current.next
 
-    def remove_from_index(self):
-        
-
-
-
-
+    def remove_from_index(self, index):
+        current = self.head
+        count = 0
+        if self.find_value(index) is None:
+            print('Index out of range')
+        elif count == index:
+            self.head = current.next
+        else:
+            while current is not None:
+                if count == index:
+                    break
+                pre = current
+                current = current.next
+                count += 1
+            pre.next = current.next
 
 list = LinkedList()
 list.head = Node('A')
@@ -122,7 +133,8 @@ list.insert(value2, 'C')
 list.insert(value2.next, 'E')
 # list.remove_head()
 # list.remove_tail()
-list.remove_from_value('A')
+# list.remove_from_value('G')
+list.remove_from_index(4)
 list.print_list()
 # print(list.get_head())
 # print(list.get_end())
