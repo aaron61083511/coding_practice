@@ -32,12 +32,27 @@ class LinkedList(object):
         new.next = self.head
         self.head = new
 
-    # def find_end(self):
-
+    def get_tail(self):
+        val = self.head
+        while val:
+            val = val.next
+            if val is not None:
+                tail = val.node
+        return tail
 
     def add_end(self, newnode):
-        new = Node(newnode)
+        val = self.head
+        while val.next:
+            val = val.next
+        val.next = Node(newnode)
 
+    def insert(self, middle_node, newdata):
+        if middle_node is None:
+            print('No mentioned node')
+            return
+        newnode = Node(newdata)
+        newnode.next = middle_node.next
+        middle_node.next = newnode
 
 
 
@@ -47,9 +62,15 @@ value2 = Node('B')
 value3 = Node('D')
 list.head.next = value2
 value2.next = value3
-list.add_head('start')
-list.add_head('')
-list.add_head('sd')
+# list.add_head('start')
+# list.add_head('')
+# list.add_head('sd')
+# list.add_head(None)
+# list.add_tail('xx')
+# list.add_tail(None)
+list.insert(value2, 'C')
+list.insert(value2.next, 'E')
 list.print_list()
-print(list.get_head())
-print(list.get_length())
+# print(list.get_head())
+# print(list.get_end())
+# print(list.get_length())
