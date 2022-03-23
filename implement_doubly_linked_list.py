@@ -32,6 +32,7 @@ class DoublyLinkedList(object):
     def add_head(self, new_node):
         new = Node(new_node)
         new.next = self.head
+        new.prev = None
         if self.head is not None:
             self.head.prev = new
         self.head = new
@@ -45,10 +46,16 @@ class DoublyLinkedList(object):
         return tail
 
     def add_end(self, new_node):
+        new = Node(new_node)
         val = self.head
+        new.next = None
+        if self.head is None:
+            new.prev = None
+            self.head = new
         while val.next:
             val = val.next
-        val.next = Node(new_node)
+        val.next = new
+        new.prev = val
 
     def insert(self, middle_node, new_data):
         if middle_node is None:
@@ -127,7 +134,7 @@ class DoublyLinkedList(object):
             pre.prev = current.prev
 
 
-list = LinkedList()
+list = DoublyLinkedList()
 list.head = Node('A')
 value2 = Node('B')
 value3 = Node('D')
@@ -144,7 +151,7 @@ list.insert(value2.next, 'E')
 # list.remove_head()
 # list.remove_tail()
 # list.remove_from_value('G')
-list.remove_from_index(4)
+list.remove_from_index(5)
 list.print_list()
 # print(list.get_head())
 # print(list.get_end())

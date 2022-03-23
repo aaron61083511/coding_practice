@@ -1,7 +1,9 @@
 class Node(object):
-    def __init__(self, node=None):
+    def __init__(self, key, node):
+        self.key = key
         self.node = node
         self.next = None
+
 
 class HashTable(object):
     def __init__(self):
@@ -10,4 +12,3 @@ class HashTable(object):
     def hash(self, key):
         length = len(self.array)
         return hash(key) % length
-
