@@ -37,11 +37,10 @@ class Queue(object):
         elif self.size == 1:
             self.head = None
             self.tail = None
-            self.head.index = 0
-            self.tail.index = 0
         else:
             self.head.next.prev = None
             self.head = self.head.next
+        self.size -= 1
 
     def peek(self):
         if self.head is not None:
