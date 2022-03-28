@@ -55,6 +55,7 @@ class Pqueue(object):
             else:
                 new.next = current.next
                 new.prev = current
+                current.next.prev = new
                 current.next = new
         self.size += 1
 
@@ -65,6 +66,7 @@ class Pqueue(object):
             # print(self.head.priority, self.head.value)
             self.head = self.head.next
             self.head.next.prev = None
+        self.size -= 1
 
     def peek_highest_priority(self):
         if self.head is None:
@@ -78,6 +80,107 @@ class Pqueue(object):
         else:
             print(self.tail.priority, self.tail.value)
 
+    def get_index_from_value(self, value):
+        # get the index of value with highest priority
+        if self.head is None:
+            print('Empty PQ')
+        else:
+            current = self.head
+            index = 0
+            while current is not None:
+                if current.value == value:
+                    break
+                current = current.next
+                index += 1
+            if current is None:
+                print('Value is not in PQ')
+            else:
+                print(index)
+
+    def get_index_from_priority(self, priority):
+        # get first value index of input priority level
+        if self.head is None:
+            print('Empty PQ')
+        else:
+            current = self.head
+            index = 0
+            while current is not None:
+                if current.priority == priority:
+                    break
+                current = current.next
+                index += 1
+            if current is None:
+                print('Priority out of range')
+            else:
+                print(index)
+
+    def get_priority_from_value(self, value):
+        # print highest priority
+        if self.head is None:
+            print('Empty PQ')
+        else:
+            current = self.head
+            while current is not None:
+                if current.value == value:
+                    break
+                current = current.next
+            if current is None:
+                print('Value is not in PQ')
+            else:
+                print(current.priority)
+
+    def get_value_from_priority(self, priority):
+        # print first value under same priority
+        if self.head is None:
+            print('Empty PQ')
+        else:
+            current = self.head
+            while current is not None:
+                if current.priority == priority:
+                    break
+                current = current.next
+            if current is None:
+                print('Priority out of range')
+            else:
+                print(current.value)
+
+    def get_value_priority_from_index(self, index):
+        if self.head is None:
+            print('Empty QP')
+        elif index >= 0:
+            current = self.head
+            counter = 0
+            while current is not None:
+                if counter == index:
+                    break
+                current = current.next
+                counter += 1
+            if current is None:
+                print('Index out of range')
+            else:
+                print(current.priority, current.value)
+        else:
+            current = self.tail
+            counter = -1
+            while current is not None:
+                print(current.priority, current.value, counter)
+                if counter == index:
+                    break
+                current = current.prev
+                counter -= 1
+            if current is None:
+                print('Index out of range')
+            else:
+                print(current.priority, current.value)
+
+
+    # def remove_item_from_index(self, index):
+    #
+    # def remove_item_from_value(self, value):
+    #
+    # def remove_item_from_priority(self, priority):
+
+
 
 pq = Pqueue()
 pq.insert_with_priority('A', 0)
@@ -89,4 +192,9 @@ pq.insert_with_priority('AA2', 2)
 # pq.pull_highest_priority_element()
 # pq.peek_lowest_priority()
 # pq.peek_highest_priority()
+# pq.get_index_from_value('BB')
+# pq.get_index_from_priority(2)
+# pq.get_priority_from_value('AAA')
+# pq.get_value_from_priority(5)
+pq.get_value_priority_from_index(-4)
 pq.print_pq()

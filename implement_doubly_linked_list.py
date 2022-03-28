@@ -125,6 +125,7 @@ class DoublyLinkedList(object):
             else:
                 new.next = current.next
                 new.prev = current
+                current.next.prev = new
                 current.next = new
 
     def insert_before_item(self, item, new_data):
@@ -146,8 +147,9 @@ class DoublyLinkedList(object):
                 self.head = new
             else:
                 new.prev = current.prev
-                current.prev = new
                 new.next = current
+                current.prev.next = new
+                current.prev = new
 
     def find_index(self, value):
         current = self.head
