@@ -11,8 +11,9 @@
 # More advanced implementations may support more complicated operations, such as pull_lowest_priority_element, inspecting the first few highest- or lowest-priority elements, clearing the queue, clearing subsets of the queue, performing a batch insert, merging two or more queues into one, incrementing priority of any element, etc.
 
 class Node(object):
-    def __init__(self, value):
+    def __init__(self, value, priority):
         self.value = value
+        self.priority = priority
         self.prev = None
         self.next = None
 
@@ -22,3 +23,14 @@ class pqueue(object):
         self.head = None
         self.tail = None
         self.size = 0
+
+    def print_pq(self):
+        if self.head is None:
+            print('Empty PQ')
+        else:
+            current = self.head
+            while current is not None:
+                print(current.priority, current.value)
+                current = current.next
+
+    def 
