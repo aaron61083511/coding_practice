@@ -97,6 +97,7 @@ class Queue(object):
 queue = Queue()
 queue.enqueue('A')
 queue.enqueue('B')
+queue.enqueue('C')
 # queue.dequeue()
 queue.peek()
 # queue.print_queue()
