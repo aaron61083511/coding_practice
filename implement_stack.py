@@ -68,7 +68,32 @@ class Stack(object):
                 print(index)
 
     def get_value(self, index):
-        if ses
+        if self.top is None:
+            print('Empty Stack')
+        elif index >= 0:
+            current = self.top
+            counter = 0
+            while current is not None:
+                if counter == index:
+                    break
+                current = current.next
+                counter += 1
+            if current is None:
+                print('Index out of range')
+            else:
+                print(current.value)
+        else:
+            current = self.bottom
+            counter = -1
+            while current is not None:
+                if counter == index:
+                    break
+                current = current.prev
+                counter -= 1
+            if current is None:
+                print('Index out of range')
+            else:
+                print(current.value)
 
 
 stack = Stack()
@@ -80,3 +105,4 @@ stack.print_stack()
 stack.peek_top()
 stack.peek_bottom()
 stack.get_index('B')
+stack.get_value(5)
