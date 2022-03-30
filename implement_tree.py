@@ -53,10 +53,26 @@ class BTS(object):
             result.append(root_node.value)
         return result
 
+    def get_min(self, node):
+        if node is None:
+            print('Empty BST')
+        else:
+            while node.left is not None:
+                node = node.left
+        print(node.value)
+
+    def get_max(self, node):
+        if node is None:
+            print('Empty BST')
+        else:
+            while node.right is not None:
+                node = node.right
+        print(node.value)
+
 
 bts = BTS()
 root = Node(56)
-bts.insert(root, 56)
+# bts.insert(root, 56)
 bts.insert(root, 32)
 bts.insert(root, 61)
 bts.insert(root, 88)
@@ -65,3 +81,5 @@ bts.insert(root, 98)
 print(bts.print_inorder(root))
 print(bts.print_preorder(root))
 print(bts.print_postorder(root))
+bts.get_min(root)
+bts.get_max(root)
