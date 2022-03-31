@@ -5,9 +5,15 @@ class Node(object):
         self.right = None
 
 
-class BTS(object):
+class BST(object):
     def __init__(self):
         self.root = None
+
+    def get_root(self, node):
+        if node is None:
+            print('Empty BST')
+        else:
+            print(node.value)
 
     def insert(self, node, value=None):
         if self.root is None and value is None:
@@ -69,8 +75,51 @@ class BTS(object):
                 node = node.right
         print(node.value)
 
+    def search(self, node, value):
+        self.root = node
+        if node is None:
+            print('Empty BST')
+        else:
+            if node.value > value:
+                if node.left is None:
+                    print('Value not in BST')
+                else:
+                    self.search(node.left, value)
+            elif node.value < value:
+                if node.right is None:
+                    print('Value not in BST')
+                else:
+                    self.search(node.right, value)
+            else:
+                print(self.print_preorder(node))
 
-bts = BTS()
+    def delete(self, node, value):
+        if node is None:
+            print('Empty BST')
+        else:
+            if node.value > value:
+                node.left = self.delete(node.left, value)
+            elif node.value < value:
+                node.right = self.delete(node.right, value)
+            else:
+                if node.left is None and node.right is None:
+                    node = None
+                elif node.right is not None:
+                    current = node.right
+                    while current.left is not None:
+                        current = current.left
+                    node.value = current.value
+                    node.right = self.delete(node.right, node.value)
+                else:
+                    current = node.left
+                    while node.right is not None:
+                        node = node.right
+                    node.value = current.value
+                    node.left = self.delete(node.left, node.value)
+        return node
+
+
+bts = BST()
 root = Node(56)
 # bts.insert(root, 56)
 bts.insert(root, 32)
@@ -78,8 +127,12 @@ bts.insert(root, 61)
 bts.insert(root, 88)
 bts.insert(root, 77)
 bts.insert(root, 98)
+bts.delete(root, 56)
 print(bts.print_inorder(root))
-print(bts.print_preorder(root))
-print(bts.print_postorder(root))
-bts.get_min(root)
-bts.get_max(root)
+# print(bts.print_preorder(root))
+# print(bts.print_postorder(root))
+# bts.get_min(root)
+# bts.get_max(root)
+# bts.search(root, 88)
+bts.get_root(root)
+
