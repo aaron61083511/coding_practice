@@ -6,7 +6,7 @@ class Node(object):
 
 
 class BST(object):
-    def __init__(self):
+    def __init__(self): 
         self.root = None
 
     def get_root(self, node):
