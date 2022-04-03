@@ -6,7 +6,7 @@ class Node(object):
 
 
 class BST(object):
-    def __init__(self): 
+    def __init__(self):
         self.root = None
 
     def get_root(self, node):
@@ -133,6 +133,6 @@ print(bts.print_inorder(root))
 # print(bts.print_postorder(root))
 # bts.get_min(root)
 # bts.get_max(root)
-# bts.search(root, 88)
-bts.get_root(root)
+bts.search(root, 88)
+# bts.get_root(root)
 
