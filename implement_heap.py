@@ -55,6 +55,19 @@ class Heap(object):
 
     def get_max_heapify_list(self):
         print(self.max_heap_list)
+        return self.max_heap_list
+
+    def remove_item_max_heap(self, max_list, value):
+        if value not in max_list:
+            print('Value not in list')
+        else:
+            current = max_list.index(value)
+            max_list[current] = max_list[len(max_list) - 1]
+            max_list.pop()
+            self.max_heap_list = max_list.copy()
+            n = int((len(self.max_heap_list) // 2) - 1)
+            for i in range(n, -1, -1):
+                self.max_heapify(i)
 
 
 heap_list = Heap()
@@ -66,6 +79,9 @@ heap_list.insert(11, 'max')
 heap_list.insert(4, 'max')
 heap_list.insert(7, 'max')
 heap_list.insert(20, 'max')
+heap_list.insert(25, 'max')
+max_heap_list = heap_list.get_max_heapify_list()
+heap_list.remove_item_max_heap(max_heap_list, 9)
 heap_list.get_list()
 heap_list.get_max_heapify_list()
-heap_list.get_root('max')
+# heap_list.get_root('max')
