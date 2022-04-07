@@ -9,9 +9,9 @@ def bs_i(array, target):
         if array[mid] == target:
             return mid
         elif array[mid] < target:
-            low = mid + 1
+            low = mid
         else:
-            high = mid - 1
+            high = mid
     if array[low] == target:
         return low
     if array[high] == target:
