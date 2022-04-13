@@ -1,7 +1,8 @@
 class Node(object):
-    def __init__(self, node = None):
+    def __init__(self, node=None):
         self.node = node
         self.next = None
+
 
 class LinkedList(object):
     def __init__(self):
@@ -116,6 +117,17 @@ class LinkedList(object):
                 current = current.next
                 count += 1
             pre.next = current.next
+
+    def reverse(self):
+        previous = None
+        current = self.head
+        while current is not None:
+            next_node = current.next
+            current.next = previous
+            previous = current
+            current = next_node
+        self.head = previous
+
 
 list = LinkedList()
 list.head = Node('A')
