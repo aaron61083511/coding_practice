@@ -30,3 +30,35 @@ class Solution:
 
             return validate(node.left, low, node.val) and validate(node.right, node.val, high)
         return validate(root)
+
+    def isValidBST_inorder_recursive(self, root: Optional[TreeNode]) -> bool:
+        def inorder(root):
+            if not root:
+                return True
+            if not inorder(root.left):
+                return False
+            if root.val <= self.prev:
+                return False
+            self.prev = root.val
+            return inorder(root.right)
+
+        self.prev = -math.inf
+        return inorder(root)
+
+    def isValidBST_inorder_iterative(self, root: Optional[TreeNode]) -> bool:
+        stack, prev = [], -math.inf
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            # If next element in inorder traversal
+            # is smaller than the previous one
+            # that's not BST.
+            if root.val <= prev:
+                return False
+            prev = root.val
+            root = root.right
+
+        return True
