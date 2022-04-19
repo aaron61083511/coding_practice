@@ -1,7 +1,6 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result = []
-        path_sum = 0
         def backtracking(candidates, path=[], start=0):
             path_sum = sum(path)
             if path_sum == target:
