@@ -1,5 +1,5 @@
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
+    def solveNQueens(self, n: int):
         result = []
         board = []
         for i in range(n):
@@ -37,4 +37,4 @@ class Solution:
                 board[row][col] = '.'
 
         backtracking(board, 0)
-        return result
+        return len(result)
