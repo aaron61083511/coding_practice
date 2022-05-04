@@ -33,4 +33,4 @@ class Solution:
         tail.next = current
 
         return head
-        
+
