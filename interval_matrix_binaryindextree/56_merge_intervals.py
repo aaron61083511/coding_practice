@@ -13,3 +13,13 @@ class Solution:
             else:
                 result.append(current)
         return result
+
+
+        # intervals.sort(key = lambda x: x[0])
+        # merged = []
+        # for i in intervals:
+        #     if not merged or merged[-1][1] < i[0]:
+        #         merged.append(i)
+        #     else:
+        #         merged[-1][1] = max(i[1], merged[-1][1])
+        # return merged
