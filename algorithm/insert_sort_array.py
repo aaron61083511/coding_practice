@@ -8,7 +8,7 @@ def insert_sort_array(arr):
                 j -= 1
             arr[j+1] = key
     else:
-        print('empty arry')
+        print('empty array')
     return arr
 
 assert insert_sort_array([1, 10, 5, 2, 2,3,8])
