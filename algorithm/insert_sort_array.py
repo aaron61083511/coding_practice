@@ -11,6 +11,4 @@ def insert_sort_array(arr):
         print('empty array')
     return arr
 
-# assert insert_sort_array([1, 10, 5, 2, 2,3,8])
-# assert insert_sort_array([])
 print(insert_sort_array([1, 10, 5, 2, 2, 3, 8]))
