@@ -9,4 +9,4 @@ def bubble_sort_array(arr):
         print('empty array')
     return arr
 
-print(bubble_sort_array([1, 10, 5, 2, 2,3,8]))
+print(bubble_sort_array([1, 10, 5, 2, 2, 3, 8]))
