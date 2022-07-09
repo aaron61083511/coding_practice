@@ -20,8 +20,8 @@ def partition(arr, low, high):
     arr[high], arr[pointer+1] = arr[pointer+1], arr[high]
     return pointer+1
 
-def partition2(array, start, end):
-    pivot = array[start]
+def partition2(arr, start, end):
+    pivot = arr[start]
     low = start + 1
     high = end
     while True:
@@ -30,20 +30,20 @@ def partition2(array, start, end):
         # to the next element.
         # We also need to make sure we haven't surpassed the low pointer, since that
         # indicates we have already moved all the elements to their correct side of the pivot
-        while low <= high and array[high] >= pivot:
+        while low <= high and arr[high] >= pivot:
             high = high - 1
         # Opposite process of the one above
-        while low <= high and array[low] <= pivot:
+        while low <= high and arr[low] <= pivot:
             low = low + 1
         # We either found a value for both high and low that is out of order
         # or low is higher than high, in which case we exit the loop
         if low <= high:
-            array[low], array[high] = array[high], array[low]
+            arr[low], arr[high] = arr[high], arr[low]
             # The loop continues
         else:
             # We exit out of the loop
             break
-    array[start], array[high] = array[high], array[start]
+    arr[start], arr[high] = arr[high], arr[start]
     return high
 
 data = [1, 10, 5, 2, 3, 8]
