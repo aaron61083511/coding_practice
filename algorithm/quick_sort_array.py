@@ -1,5 +1,7 @@
 # https://towardsdatascience.com/quicksort-in-python-dbefa7dcf9cc
 def quick_sort_array(arr, low, high):
+    mid = low + (high - low)//2
+    arr[mid], arr[high] = arr[high], arr[mid]
     if low < high:
         pivot_position = partition(arr, low, high)
         # pivot_position = partition2(arr, low, high)
