@@ -14,4 +14,4 @@ class MovingAverage:
         else:
             drop = 0
         self.sum_window = self.sum_window - drop + val
-        return sum(self.queue)/min(self.count, self.size)
+        return self.sum_window/min(self.count, self.size)
