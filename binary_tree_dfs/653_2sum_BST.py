@@ -24,7 +24,7 @@ class Solution:
 
         return False
 
-    # another way:
+    # # Binary Search:
     # def findTarget(self, root: TreeNode, k: int) -> bool:
     #     output = []
     #     self.inorder(root,output)
