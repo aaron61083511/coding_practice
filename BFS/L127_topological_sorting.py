@@ -49,6 +49,8 @@ class Solution_bfs:
         for vertex in graph:
             if node_info.get(vertex, 0) == 0:
                 zero_queue.append(vertex)
+        # clearer code:
+        # zero_queue = [v for v in graph if indegree[v] == 0]
 
         # BFS
         result = []
