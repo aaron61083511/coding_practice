@@ -9,7 +9,7 @@ class Solution:
             for col in range(n_col):
                 if rooms[row][col] == 0:
                     queue.append((row, col))
-        level = 1
+
         while queue:
             size = len(queue)
             for i in range(size):
@@ -18,9 +18,7 @@ class Solution:
                     r1, c1 = r+dr, c+dc
                     if r1 < 0 or r1 >= n_row or c1 < 0 or c1 >= n_col or rooms[r1][c1] != 2147483647:
                         continue
-                    rooms[r1][c1] = min(level, rooms[r1][c1])
+                    rooms[r1][c1] = rooms[r][c] + 1
                     queue.append((r1, c1))
-            if queue:
-                level += 1
         
         return rooms
