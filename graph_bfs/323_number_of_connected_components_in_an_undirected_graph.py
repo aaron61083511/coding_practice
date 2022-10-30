@@ -43,3 +43,24 @@ class Solution:
                         visited.add(neighbor)
                         stack.append(neighbor)
         return res
+
+    def countComponents_bfs(self, n: int, edges: List[List[int]]) -> int:
+        res = 0
+        graph = defaultdict(list)
+        for i in edges:
+            graph[i[0]].append(i[1])
+            graph[i[1]].append(i[0])
+        
+        visited = set()
+        for i in range(n):
+            if i not in visited:
+                res += 1
+                queue = deque([i])
+                while queue:
+                    node = queue.popleft()
+                    for neighbor in graph[node]:
+                        if neighbor not in visited:
+                            visited.add(neighbor)
+                            queue.append(neighbor)
+        
+        return res
