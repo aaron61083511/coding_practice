@@ -32,3 +32,15 @@ class Solution:
             else:
                 root = root.left
         return closest
+
+    def closestValue_binary_search2(self, root: Optional[TreeNode], target: float) -> int:
+        res = dict()
+        while root:
+            res[root.val] = abs(root.val - target)
+            if root.val < target:
+                root = root.right
+            else:
+                root = root.left
+        for key in res:
+            if res[key] == min(res.values()):
+                return key
