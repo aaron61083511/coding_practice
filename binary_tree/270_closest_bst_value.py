@@ -44,3 +44,13 @@ class Solution:
         for key in res:
             if res[key] == min(res.values()):
                 return key
+    def closestValue_binary_search3(self, root: Optional[TreeNode], target: float) -> int:
+        min_val = root.val
+        while root:
+            if abs(root.val - target) < abs(min_val - target):
+                min_val = root.val
+            elif root.val < target:
+                root = root.right
+            else:
+                root = root.left
+        return min_val
