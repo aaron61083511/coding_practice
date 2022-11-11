@@ -34,3 +34,21 @@ class Solution:
         paths = []
         construct_paths(root, '')
         return paths
+
+    def binaryTreePaths_backtrack(self, root: Optional[TreeNode]) -> List[str]:
+        def backtrack(node, path, rst):
+            children = (node.left, node.right)
+            
+            path.append(str(node.val))
+
+            if not any(children): # leaf
+                rst.append('->'.join(path))
+                
+            for child in filter(None, children):
+                backtrack(child, path, rst)
+                
+            path.pop()
+                    
+            return rst
+        
+        return backtrack(root, [], [])
