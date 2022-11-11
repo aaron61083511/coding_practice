@@ -62,3 +62,20 @@ class Solution:
             root = root.right
 
         return True
+
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        c = float('+inf')
+        f = float('-inf')
+        
+        def dfs(x, c, f): 
+            if x is None:
+                return True
+            if not c > x.val > f:
+                return False
+				
+			#update ceiling and floor:	
+            #left child: ceiling is parent's val floor is parent's floor
+            #right child: ceiling is parent's ceiling floor is parent's val
+            return dfs(x.left, x.val, f) and dfs(x.right, c, x.val)
+        
+        return dfs(root, c, f)
