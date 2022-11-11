@@ -64,18 +64,15 @@ class Solution:
         return True
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        c = float('+inf')
-        f = float('-inf')
+        upper, lower = float('inf'), float('-inf')
         
-        def dfs(x, c, f): 
-            if x is None:
+        def check(node, upper, lower):
+            if not node:
                 return True
-            if not c > x.val > f:
+            if not lower < node.val < upper:
                 return False
-				
-			#update ceiling and floor:	
-            #left child: ceiling is parent's val floor is parent's floor
-            #right child: ceiling is parent's ceiling floor is parent's val
-            return dfs(x.left, x.val, f) and dfs(x.right, c, x.val)
+            left = check(node.left, node.val, lower)
+            right = check(node.right, upper, node.val)
+            return left and right
         
-        return dfs(root, c, f)
+        return check(root, upper, lower)
