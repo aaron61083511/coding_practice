@@ -16,3 +16,19 @@ class Solution:
                         return True
             visited.add(start)
         return False
+
+    def wordBreak_II(self, s: str, wordDict: List[str]) -> bool:
+        queue = deque([s])
+        visited = set()
+
+        while queue:
+            node = queue.popleft()
+            for i in wordDict:
+                if node[:len(i)] == i:
+                    if len(node[len(i):]) == 0:
+                        return True
+                    if node[len(i):] not in visited:
+                        queue.append(node[len(i):])
+                        visited.add(node[len(i):])
+
+        return False
