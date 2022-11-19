@@ -34,7 +34,7 @@ class Solution:
             else:
                 visited[path] += 1
                 if visited[path] == 2:
-                        res.append(node)
+                    res.append(node)
             return path
         helper(root)
         return res
