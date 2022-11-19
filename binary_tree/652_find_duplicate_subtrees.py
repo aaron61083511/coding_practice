@@ -20,3 +20,21 @@ class Solution:
         
         helper(root)
         return res
+    
+    def findDuplicateSubtrees_similar(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        res = []
+        visited = {}
+
+        def helper(node, path=''):
+            if not node:
+                return '#'
+            path += ','.join([str(node.val), helper(node.left, path), helper(node.right, path)])
+            if path not in visited:
+                visited[path] = 1
+            else:
+                visited[path] += 1
+                if visited[path] == 2:
+                        res.append(node)
+            return path
+        helper(root)
+        return res
