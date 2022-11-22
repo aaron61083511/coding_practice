@@ -24,3 +24,23 @@ class Solution:
             
         rec = {0:1}
         return dfs(root, 0, targetSum)
+
+    def pathSum_alternative(self, root: Optional[TreeNode], targetSum: int) -> int:
+        count = curr_sum = 0
+        h = defaultdict(int)
+
+        def helper(node, curr_sum):
+            nonlocal count, h
+            if not node:
+                return 0
+            curr_sum += node.val
+            if curr_sum == targetSum:
+                count += 1
+            count += h[curr_sum-targetSum]
+            h[curr_sum] += 1
+            helper(node.left, curr_sum)
+            helper(node.right, curr_sum)
+            h[curr_sum] -= 1
+        
+        helper(root, curr_sum)
+        return count
