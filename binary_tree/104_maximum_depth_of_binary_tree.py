@@ -40,8 +40,7 @@ class Solution:
             if not node:
                 return
             depth += 1
-            if depth > res:
-                res = max(depth, res)
+            res = max(depth, res)
             dfs(node.left)
             dfs(node.right)
             depth -= 1
