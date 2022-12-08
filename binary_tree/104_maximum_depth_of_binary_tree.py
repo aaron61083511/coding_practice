@@ -23,3 +23,28 @@ class Solution:
             level += 1
         
         return level
+    
+    def maxDepth_DP(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        res = max(left, right) + 1
+        return res
+    
+    def maxDepth_Backtracking(self, root: Optional[TreeNode]) -> int:
+        depth = 0
+        res = 0
+        def dfs(node):
+            nonlocal depth, res
+            if not node:
+                return
+            depth += 1
+            if depth > res:
+                res = max(depth, res)
+            dfs(node.left)
+            dfs(node.right)
+            depth -= 1
+        
+        dfs(root)
+        return res
