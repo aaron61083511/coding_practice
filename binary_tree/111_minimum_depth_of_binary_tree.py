@@ -37,3 +37,18 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
         return depth
+    
+    def minDepth_DP(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        if not (root.left or root.right):
+            return 1
+        
+        min_depth = float('inf')
+        
+        if root.left:
+            min_depth = min(self.minDepth(root.left), min_depth)
+        if root.right:
+            min_depth = min(self.minDepth(root.right), min_depth)
+        
+        return min_depth + 1 
