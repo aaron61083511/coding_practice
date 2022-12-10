@@ -42,6 +42,7 @@ print(xx(s, c))
 
 # 2 (leetcode 1904)
 def xx(startTime, finishTime):
+    # convert time to minutes
     ts = 60 * int(startTime[:2]) + int(startTime[-2:])
     tf = 60 * int(finishTime[:2]) + int(finishTime[-2:])
     if 0 <= tf - ts < 15: return 0 # edge case 
