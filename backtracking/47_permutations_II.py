@@ -17,3 +17,19 @@ class Solution:
 
         backtracking([], nums)
         return result
+
+    def permuteUnique_I(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def back(start = 0):
+            if start == len(nums):
+                res.append(nums[:])
+            used = set()
+            for i in range(start, len(nums)):
+                if nums[i] not in used:
+                    used.add(nums[i])
+                    nums[start], nums[i] = nums[i], nums[start]
+                    back(start+1)
+                    nums[start], nums[i] = nums[i], nums[start]
+        
+        back()
+        return res
