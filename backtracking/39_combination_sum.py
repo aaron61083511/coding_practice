@@ -16,3 +16,18 @@ class Solution:
 
         backtracking(candidates)
         return result
+
+
+        # res = []
+        # def helper(candidates, path, start):
+        #     if sum(path) == target:
+        #         res.append(path[:])
+        #         return
+        #     if sum(path) > target:
+        #         return
+        #     for i in range(start, len(candidates)):
+        #         path.append(candidates[i])
+        #         helper(candidates, path, i)
+        #         path.pop()
+        # helper(candidates, [], 0)
+        # return res
